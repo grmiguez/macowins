@@ -14,10 +14,10 @@ public class CreditCard implements PaymentMethod {
 
     @Override
     public float calculatePriceToPay(List<Float> prices) {
-        return (this.installments * FIXEDVALUE + itemsPrimeSum(prices, ITEMSPERCENTAGE));
+        return (this.installments * FIXEDVALUE + itemsPriceSum(prices, ITEMSPERCENTAGE));
     }
 
-    private float itemsPrimeSum(List<Float> prices, float percentage) {
+    private float itemsPriceSum(List<Float> prices, float percentage) {
         return prices.stream().reduce((float) 0, (origin, price) -> origin + (percentage * price));
     }
 }
